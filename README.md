@@ -32,7 +32,7 @@ Filters for CC input
 You can specify the filter type when retrieving the CC value with the GetKnob function.
 There are three filter types.
 
-- Filter.Realtime - no filter. It returns the real value.
+- Filter.Realtime - no filter. It returns the last received value.
 - Filter.Fast - light low-pass filter. It suits fast-moving objects.
 - Filter.Slow - heavy low-pass filter. Very smooth but not responsive.
  
