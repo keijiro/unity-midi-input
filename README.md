@@ -7,19 +7,19 @@ external MIDI controllers.
 Demo
 ----
 
-There are two demo projects in the [test branch]
+You can find two demo projects in the [test branch]
 (https://github.com/keijiro/unity-midi-input/tree/test).
 
 #### Note
 
-The first demo named "Note" shows how to get a key press and release from MidiInput.
+The first demo "Note" shows how to get key presses and releases from MidiInput.
 The size of the cubes are relative to velocity of a key press.
 
 ![Screenshot](http://keijiro.github.io/unity-midi-input/screenshot1.png)
 
 #### CC
 
-The second demo named "CC" shows how to get CC (control change) data from MidiInput.
+The second demo "CC" shows how to get CC (control change) data from MidiInput.
 
 ![Screenshot](http://keijiro.github.io/unity-midi-input/screenshot2.png)
 
@@ -34,8 +34,8 @@ Setting up
 
 1. Drag and drop the contents of this repository into the Project view.
 2. Add the **MidiInput** script component to a game object.
-3. In Script Execution Order settings (Edit -> Project Settings -> Script Execution
-   Order) set the **MidiInput** script to the highest priority.
+3. Open Script Execution Order Settings (Edit -> Project Settings -> Script Execution
+   Order) and set the **MidiInput** script to the highest priority.
 
 Function reference
 ------------------
@@ -79,8 +79,8 @@ See also
 --------
 
 This project was derived from [unity-midi-receiver]
-(https://github.com/keijiro/unity-midi-receiver), and you can see the details
-of the implementation there.
+(https://github.com/keijiro/unity-midi-receiver).
+You can see the details of the implementation there.
 
 License
 -------
