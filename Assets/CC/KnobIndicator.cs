@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Indicator : MonoBehaviour
+public class KnobIndicator : MonoBehaviour
 {
     public static MidiInput.Filter filter = MidiInput.Filter.Realtime;
 
