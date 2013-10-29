@@ -10,19 +10,24 @@ Demo
 There are two demo projects in the [test branch]
 (https://github.com/keijiro/unity-midi-input/tree/test).
 
-![Screenshot](http://keijiro.github.io/unity-midi-input/screenshot1.png)
+#### Note
 
 The first demo named "Note" shows how to get a key press and release from MidiInput.
+The size of the cubes are relative to velocity of a key press.
+
+![Screenshot](http://keijiro.github.io/unity-midi-input/screenshot1.png)
+
+#### CC
+
+The second demo named "CC" shows how to get CC (control change) data from MidiInput.
 
 ![Screenshot](http://keijiro.github.io/unity-midi-input/screenshot2.png)
-
-The second demo named "CC" shows how to get CC (Control-Change) data from MidiInput.
 
 System requirement
 ------------------
 
-- Currently it supports only the desktop platforms (Windows and Mac OS X).
-- It requires Unity Pro to enable native plug-in feature.
+- Currently supports only the desktop platforms (Windows and Mac OS X).
+- Requires Unity Pro to enable native plug-in feature.
 
 Setting up
 ----------
@@ -32,8 +37,8 @@ Setting up
 3. In Script Execution Order settings (Edit -> Project Settings -> Script Execution
    Order) set the **MidiInput** script to the highest priority.
 
-Usage
------
+Function reference
+------------------
 
 #### static float GetKey ( noteNumber )
 
@@ -47,16 +52,16 @@ Returns true during the frame the key was pressed down.
 
 #### static bool GetKeyUp ( noteNumber )
 
-Returns true during the frame the key was relesed.
+Returns true during the frame the key was released.
 
 #### static float GetKnob ( channel, filter )
 
-Provides the current value from the specified CC channel (CC#).
+Returns the current value of the specified CC channel.
 
 #### static int [] KonbChannels
 
-The CC channel list. It contains the channel numbers which has alraedy sent any data
-to the host.
+Provides the CC channel list. It contains the channel numbers which has alraedy
+sent data to the host.
 
 Filters for CC input
 --------------------
@@ -70,8 +75,8 @@ the GetKnob function.
 
 You can adjust the sensibility of each filter in the inspector.
 
-Related projects
-----------------
+See also
+--------
 
 This project was derived from [unity-midi-receiver]
 (https://github.com/keijiro/unity-midi-receiver), and you can see the details
