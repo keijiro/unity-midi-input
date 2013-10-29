@@ -1,19 +1,20 @@
 MidiInput for Unity
 ===================
 
-**MidiInput** is a native code plug-in for Unity. It interfaces with MIDI input devices.
-You can use it to control Unity apps with physical MIDI controllers.
+**MidiInput** is a native code plug-in for Unity. It allows Unity to communicate with
+external MIDI controllers.
 
 This project was derived from [unity-midi-receiver]
-(https://github.com/keijiro/unity-midi-receiver) project.
+(https://github.com/keijiro/unity-midi-receiver).
 
 Demo
 ----
 
 ![Screenshot](http://keijiro.github.io/unity-midi-input/screenshot.png)
 
-There is a demo project in the [test branch](https://github.com/keijiro/unity-midi-input/tree/test).
-It captures CC messages sent from MIDI devices which is connected to the host computer
+You can find a demo project in the [test branch]
+(https://github.com/keijiro/unity-midi-input/tree/test).
+It captures CC messages sent from MIDI devices which is connected to the host computer,
 and shows its value graphically.
 
 Setting up
@@ -29,17 +30,18 @@ There is only one public function and one public property.
 
 #### static float GetKnob ( channel, filter )
 
-Provides the current CC value from the specified CC channel.
+Provides the current value from the specified CC channel (CC#).
 
 #### static int [] Channels
 
-The CC channel list. It contains the channel numbers which has alraedy sent any data to the host.
+The CC channel list. It contains the channel numbers which has alraedy sent any data
+to the host.
 
 Filters for CC input
 --------------------
 
-You can specify the filter type when retrieving the CC value with the GetKnob function.
-There are three filter types.
+You can specify one of the three filter types below when retrieving a CC value with
+the GetKnob function.
 
 - Filter.Realtime - no filter. It returns the last received value.
 - Filter.Fast - light low-pass filter. It suits fast-moving objects.
@@ -48,8 +50,7 @@ There are three filter types.
 Current limitation
 ------------------
 
-You can only receive CC data. Note data support is TBA.
-
+You can only receive CC data.
 
 License
 -------
