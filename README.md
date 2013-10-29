@@ -7,6 +7,15 @@ You can use it to control Unity apps with physical MIDI controllers.
 This project was derived from [unity-midi-receiver]
 (https://github.com/keijiro/unity-midi-receiver) project.
 
+Demo
+----
+
+![Screenshot](http://keijiro.github.io/unity-midi-input/screenshot.png)
+
+There is a demo project in the [test branch](https://github.com/keijiro/unity-midi-input/tree/test).
+It captures CC messages sent from MIDI devices which is connected to the host computer
+and shows its value graphically.
+
 Setting up
 ----------
 
