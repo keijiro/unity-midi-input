@@ -22,17 +22,31 @@ Setting up
 
 1. Drag and drop the contents of this repository into the Project view.
 2. Add the **MidiInput** script component to a game object.
+3. In Script Execution Order settings (Edit -> Project Settings -> Script Execution
+   Order) set the **MidiInput** script to the highest priority.
 
 Usage
 -----
 
-There is only one public function and one public property.
+#### static float GetKey ( noteNumber )
+
+If the key specified with noteNumber has been pressed down, returns its velocity
+(greater than 0.0f, and less or equal to 1.0f). If the key isn't pressed,
+returns 0.0f.
+
+#### static bool GetKeyDown ( noteNumber )
+
+Returns true during the frame the key was pressed down.
+
+#### static bool GetKeyUp ( noteNumber )
+
+Returns true during the frame the key was relesed.
 
 #### static float GetKnob ( channel, filter )
 
 Provides the current value from the specified CC channel (CC#).
 
-#### static int [] Channels
+#### static int [] KonbChannels
 
 The CC channel list. It contains the channel numbers which has alraedy sent any data
 to the host.
