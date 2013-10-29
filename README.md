@@ -7,12 +7,16 @@ external MIDI controllers.
 Demo
 ----
 
-![Screenshot](http://keijiro.github.io/unity-midi-input/screenshot.png)
-
-You can find a demo project in the [test branch]
+There are two demo projects in the [test branch]
 (https://github.com/keijiro/unity-midi-input/tree/test).
-It captures CC data sent from MIDI devices which is connected to the host computer,
-and shows its value graphically.
+
+![Screenshot](http://keijiro.github.io/unity-midi-input/screenshot1.png)
+
+The first demo named "Note" shows how to get a key press and release from MidiInput.
+
+![Screenshot](http://keijiro.github.io/unity-midi-input/screenshot2.png)
+
+The second demo named "CC" shows how to get CC (Control-Change) data from MidiInput.
 
 System requirement
 ------------------
