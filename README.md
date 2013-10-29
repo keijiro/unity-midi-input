@@ -14,7 +14,7 @@ Demo
 
 You can find a demo project in the [test branch]
 (https://github.com/keijiro/unity-midi-input/tree/test).
-It captures CC messages sent from MIDI devices which is connected to the host computer,
+It captures CC data sent from MIDI devices which is connected to the host computer,
 and shows its value graphically.
 
 Setting up
@@ -46,7 +46,9 @@ the GetKnob function.
 - Filter.Realtime - no filter. It returns the last received value.
 - Filter.Fast - light low-pass filter. It suits fast-moving objects.
 - Filter.Slow - heavy low-pass filter. Very smooth but not responsive.
- 
+
+You can adjust the sensibility of each filter in the inspector.
+
 Current limitation
 ------------------
 
