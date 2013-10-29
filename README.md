@@ -4,9 +4,6 @@ MidiInput for Unity
 **MidiInput** is a native code plug-in for Unity. It allows Unity to communicate with
 external MIDI controllers.
 
-This project was derived from [unity-midi-receiver]
-(https://github.com/keijiro/unity-midi-receiver).
-
 Demo
 ----
 
@@ -16,6 +13,12 @@ You can find a demo project in the [test branch]
 (https://github.com/keijiro/unity-midi-input/tree/test).
 It captures CC data sent from MIDI devices which is connected to the host computer,
 and shows its value graphically.
+
+System requirement
+------------------
+
+- Currently it supports only the desktop platforms (Windows and Mac OS X).
+- It requires Unity Pro to enable native plug-in feature.
 
 Setting up
 ----------
@@ -63,10 +66,12 @@ the GetKnob function.
 
 You can adjust the sensibility of each filter in the inspector.
 
-Current limitation
-------------------
+Related projects
+----------------
 
-You can only receive CC data.
+This project was derived from [unity-midi-receiver]
+(https://github.com/keijiro/unity-midi-receiver), and you can see the details
+of the implementation there.
 
 License
 -------
