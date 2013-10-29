@@ -12,14 +12,40 @@ public class MidiInput : MonoBehaviour
     static MidiInput instance;
     
     // Filter mode IDs.
-    public enum Filter {
+    public enum Filter
+    {
         Realtime,
         Fast,
         Slow
     }
+
+    // Returns the key state (on: velocity, off: zero).
+    public static float GetKey (int noteNumber)
+    {
+        var v = instance.notes [noteNumber];
+        if (v > 1.0f) {
+            return v - 1.0f;
+        } else if (v > 0.0) {
+            return v;
+        } else {
+            return 0.0f;
+        }
+    }
+
+    // Returns true if the key was pressed down in this frame.
+    public static bool GetKeyDown (int noteNumber)
+    {
+        return instance.notes [noteNumber] > 1.0f;
+    }
+
+    // Returns true if the key was released in this frame.
+    public static bool GetKeyUp (int noteNumber)
+    {
+        return instance.notes [noteNumber] < 0.0f;
+    }
     
     // Provides the channel list.
-    public static int[] Channels {
+    public static int[] KnobChannels {
         get {
             int[] channels = new int[instance.knobs.Count];
             instance.knobs.Keys.CopyTo (channels, 0);
@@ -90,6 +116,13 @@ public class MidiInput : MonoBehaviour
         }
     }
 
+    // Note state array.
+    // X<0    : Released on this frame.
+    // X=0    : Off.
+    // 0<X<=1 : On. X represents velocity.
+    // 1<X<=2 : Triggered on this frame. (X-1) represents velocity.
+    float[] notes;
+
     // Channel number to knob mapping.
     Dictionary<int, Knob> knobs;
     #endregion
@@ -113,6 +146,7 @@ public class MidiInput : MonoBehaviour
     void Awake ()
     {
         instance = this;
+        notes = new float[128];
         knobs = new Dictionary<int, Knob> ();
         #if UNITY_EDITOR
         messageHistory = new Queue<MidiMessage> ();
@@ -121,6 +155,18 @@ public class MidiInput : MonoBehaviour
 
     void Update ()
     {
+        // Update the note state array.
+        for (var i = 0; i < 128; i++) {
+            var x = notes [i];
+            if (x > 1.0f) {
+                // Key down -> Hold.
+                notes [i] = x - 1.0f;
+            } else if (x < 0) {
+                // Key up -> Off.
+                notes [i] = 0.0f;
+            }
+        }
+
         // Calculate the filter coefficients.
         var fastFilterCoeff = Mathf.Exp (-sensibilityFast * Time.deltaTime);
         var slowFilterCoeff = Mathf.Exp (-sensibilitySlow * Time.deltaTime);
@@ -140,6 +186,16 @@ public class MidiInput : MonoBehaviour
 
             // Parse the message.
             var message = new MidiMessage (data);
+
+            // Note on message?
+            if (message.status == 0x90) {
+                notes [message.data1] = 1.0f / 127 * message.data2 + 1.0f;
+            }
+
+            // Note off message?
+            if (message.status == 0x80) {
+                notes [message.data1] = -1.0f;
+            }
 
             // CC message?
             if (message.status == 0xb0) {
