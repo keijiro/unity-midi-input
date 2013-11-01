@@ -193,7 +193,7 @@ public class MidiInput : MonoBehaviour
             }
 
             // Note off message?
-            if (message.status == 0x80) {
+            if (message.status == 0x80 || (message.status == 0x90 && message.data2 == 0)) {
                 notes [message.data1] = -1.0f;
             }
 
